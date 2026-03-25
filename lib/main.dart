@@ -86,7 +86,14 @@ class _SignupPageState extends State<SignupPage> {
                     return 'Please enter your email';
                   }
                   if (!value.contains('@')) {
-                    return 'Please enter a valid email';
+                    return 'No \'@\' found\nEx. username@example.com';
+                  } else {
+                    if (value.startsWith('@')) {
+                      return 'Invalid Username\nEx. username@example.com';
+                    } 
+                    if (value.endsWith('@') || value.endsWith(".") || !value.contains('.')) {
+                      return 'Invalid domain\nEx. username@example.com';
+                    }
                   }
                   return null;
                 },
